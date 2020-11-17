@@ -1,11 +1,3 @@
-//
-//  SplashyPinTests.swift
-//  SplashyPinTests
-//
-//  Created by Jennifer Hamilton on 10/5/20.
-//  Copyright © 2020 Jennifer Hamilton. All rights reserved.
-//
-
 import XCTest
 @testable import SplashyPin
 
