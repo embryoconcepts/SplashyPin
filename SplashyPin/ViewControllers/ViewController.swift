@@ -2,7 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // MARK: Outlets
+    // MARK: - Outlets
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -10,6 +10,9 @@ class ViewController: UIViewController {
     // MARK: - Properties
 
     let viewModel = ViewModel(client: UnsplashClient())
+
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +27,12 @@ class ViewController: UIViewController {
         collectionView.refreshControl = rc
 
         setupNavigationBar()
-
         loadPhotos()
-
-
     }
 
+
+    // MARK: - Private functions
+    
     private func setupNavigationBar() {
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshButtonTapped))
         refreshButton.tintColor = .white
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
 
     @objc private func loadPhotos() {
         collectionView.refreshControl?.endRefreshing()
-        // Init viewModel
+
         viewModel.showLoading = {
             if self.viewModel.isLoading {
                 self.activityIndicator.startAnimating()
@@ -50,15 +53,17 @@ class ViewController: UIViewController {
         }
 
         viewModel.showError = { error in
-            // TODO: show alert
-            print(error)
+            let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         }
 
         viewModel.reloadData = {
             self.collectionView.reloadData()
         }
 
-        viewModel.fetchPhotos()
+        viewModel.fetchPhotoMetadata()
     }
 
     @objc func refreshButtonTapped() {
@@ -66,7 +71,8 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: Flow layout delegate
+
+// MARK: - Flow layout delegate
 
 extension ViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
@@ -76,7 +82,8 @@ extension ViewController: PinterestLayoutDelegate {
     }
 }
 
-// MARK: Data Source
+
+// MARK: - Data Source
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -88,6 +95,4 @@ extension ViewController: UICollectionViewDataSource {
         cell.configureCell(viewModel.cellViewModels[indexPath.item])
         return cell
     }
-
-
 }

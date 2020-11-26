@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
+        <!--SplashyPin-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SplashyPin" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,7 +117,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="gAE-dE-j43"/>
+                    <navigationItem key="navigationItem" title="SplashyPin" id="gAE-dE-j43"/>
                     <connections>
                         <outlet property="activityIndicator" destination="TM5-Pc-yG6" id="igc-QM-QdG"/>
                         <outlet property="collectionView" destination="nob-4z-WSM" id="67p-5w-xIt"/>

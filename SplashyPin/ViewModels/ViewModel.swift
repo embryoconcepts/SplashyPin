@@ -8,7 +8,9 @@ struct CellViewModel {
 }
 
 class ViewModel {
+
     // MARK: Properties
+
     private let client: APIClient
     private var photos: Photos = [] {
         didSet {
@@ -19,6 +21,7 @@ class ViewModel {
 
 
     // MARK: UI
+
     var isLoading: Bool = false {
         didSet {
             showLoading?()
@@ -33,7 +36,8 @@ class ViewModel {
         self.client = client
     }
 
-    func fetchPhotos() {
+    /// Fetch the metadata for a set of photos
+    func fetchPhotoMetadata() {
         if let client = client as? UnsplashClient {
             self.isLoading = true
             let endpoint = UnsplashEndpoint.photos(id: UnsplashClient.apiKey, order: .popular)
@@ -48,6 +52,7 @@ class ViewModel {
         }
     }
 
+    /// Fetch the images for an array of Photos
     private func fetchPhoto() {
         let group = DispatchGroup()
         var finalImage = UIImage()

@@ -12,10 +12,10 @@ struct Photo: Codable {
     let id: String
     let description: String?
     let altDescription: String?
-    let urls: URLS
+    let urls: URLs
 }
 
-struct URLS: Codable {
+struct URLs: Codable {
     let raw: URL
     let full: URL
     let regular: URL
