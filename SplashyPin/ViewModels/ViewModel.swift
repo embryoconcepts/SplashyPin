@@ -1,5 +1,7 @@
 import UIKit
 
+let imageCache = NSCache<NSString, UIImage>()
+
 struct CellViewModel {
     let image: UIImage
     let description: String?
@@ -48,17 +50,32 @@ class ViewModel {
 
     private func fetchPhoto() {
         let group = DispatchGroup()
+        var finalImage = UIImage()
+
         for photo in photos {
             DispatchQueue.global(qos: .background).async(group: group) {
                 group.enter()
-                guard let imageData = try? Data(contentsOf: photo.urls.thumb) else {
-                    self.showError!(APIError.imageDownload)
-                    return
-                }
 
-                guard let image = UIImage(data: imageData) else {
-                    self.showError!(APIError.imageConvert)
-                    return
+                imageCache.totalCostLimit = 50_000_000
+                let imagePath = photo.urls.thumb
+
+                if let imageFromCache = imageCache.object(forKey: imagePath.absoluteString as NSString) {
+                    finalImage = imageFromCache
+                } else {
+                    guard let imageData = try? Data(contentsOf: imagePath) else {
+                        self.showError!(APIError.imageDownload)
+                        return
+                    }
+
+                    guard let image = UIImage(data: imageData) else {
+                        self.showError!(APIError.imageConvert)
+                        return
+                    }
+
+                    if let imageData = image.jpegData(compressionQuality: 1.0) {
+                        imageCache.setObject(image, forKey: imagePath.absoluteString as NSString, cost: imageData.count)
+                        finalImage = image
+                    }
                 }
 
                 var description: String?
@@ -68,7 +85,7 @@ class ViewModel {
                     description = alt
                 }
 
-                self.cellViewModels.append(CellViewModel(image: image, description: description))
+                self.cellViewModels.append(CellViewModel(image: finalImage, description: description))
                 group.leave()
             }
         }
