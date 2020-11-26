@@ -1,6 +1,6 @@
-# SplashyPin
+# SplashyPin - WIP
 
-A project comparing UI methods using Unsplash with Pinterest-style collection views.
+A project comparing UI methods using Unsplash with a Pinterest-style collection view: storyboard, programmatic, and SwiftUI.
 
 <img src="SplashyPin-storyboard.gif" alt="SplashyPin-storyboard" width="250" />
 
