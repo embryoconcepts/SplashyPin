@@ -2,12 +2,7 @@ import UIKit
 
 let imageCache = NSCache<NSString, UIImage>()
 
-struct CellViewModel {
-    let image: UIImage
-    let description: String?
-}
-
-class ViewModel {
+class ImageViewModel {
 
     // MARK: Properties
 
@@ -17,7 +12,7 @@ class ViewModel {
             self.fetchPhoto()
         }
     }
-    var cellViewModels: [CellViewModel] = []
+    var cellViewModels: [PhotoCellViewModel] = []
 
 
     // MARK: UI
@@ -90,7 +85,7 @@ class ViewModel {
                     description = alt
                 }
 
-                self.cellViewModels.append(CellViewModel(image: finalImage, description: description))
+                self.cellViewModels.append(PhotoCellViewModel(image: finalImage, description: description))
                 group.leave()
             }
         }

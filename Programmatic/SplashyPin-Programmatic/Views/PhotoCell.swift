@@ -1,7 +1,6 @@
 import UIKit
 
 class PhotoCell: UICollectionViewCell {
-    static let reuseIdentifier = "PhotoCell"
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var labelContainerView: UIView!

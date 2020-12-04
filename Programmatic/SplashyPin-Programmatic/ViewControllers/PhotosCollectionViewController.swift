@@ -1,39 +1,47 @@
 import UIKit
 
-class ViewController: UIViewController {
+class PhotosCollectionViewController: UIViewController {
 
     // MARK: - Outlets
 
+    // TODO: add view and viewModel for collectionView
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Properties
 
-    let viewModel = ViewModel(client: UnsplashClient())
+    let viewModel = ImageViewModel(client: UnsplashClient())
 
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let layout = collectionView.collectionViewLayout as? PinterestLayout {
-            layout.delegate = self
-        }
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-
-        let rc = UIRefreshControl()
-        rc.addTarget(self, action: #selector(loadPhotos), for: .valueChanged)
-        rc.tintColor = .clear
-        collectionView.refreshControl = rc
-
-        setupNavigationBar()
+        setupViews()
         loadPhotos()
     }
 
 
     // MARK: - Private functions
-    
-    private func setupNavigationBar() {
+
+    private func setupViews() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
+
+        // collection view layout
+        if let layout = collectionView.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+        // pull to refresh
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(loadPhotos), for: .valueChanged)
+        rc.tintColor = .clear
+        collectionView.refreshControl = rc
+
+        // navigation bar
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshButtonTapped))
         refreshButton.tintColor = .white
         navigationItem.rightBarButtonItem = refreshButton
@@ -71,10 +79,14 @@ class ViewController: UIViewController {
     }
 }
 
+extension PhotosCollectionViewController: UICollectionViewDelegate {
+
+}
+
 
 // MARK: - Flow layout delegate
 
-extension ViewController: PinterestLayoutDelegate {
+extension PhotosCollectionViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         let image = viewModel.cellViewModels[indexPath.item].image
         let height = image.size.height
@@ -85,14 +97,14 @@ extension ViewController: PinterestLayoutDelegate {
 
 // MARK: - Data Source
 
-extension ViewController: UICollectionViewDataSource {
+extension PhotosCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.cellViewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        cell.configureCell(viewModel.cellViewModels[indexPath.item])
+        cell.update(with: viewModel.cellViewModels[indexPath.item])
         return cell
     }
 }
