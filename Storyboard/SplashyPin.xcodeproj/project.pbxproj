@@ -24,7 +24,7 @@
 		76F5B6D1255F014D00C697E2 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5B6D0255F014D00C697E2 /* Photos.swift */; };
 		76F5B6D3255F0A4500C697E2 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5B6D2255F0A4500C697E2 /* Endpoint.swift */; };
 		76F5B6D5255F0C0400C697E2 /* UnsplashClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5B6D4255F0C0400C697E2 /* UnsplashClient.swift */; };
-		76F5B6D8255F16BC00C697E2 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5B6D7255F16BC00C697E2 /* ImageViewModel.swift */; };
+		76F5B6D8255F16BC00C697E2 /* PhotosCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5B6D7255F16BC00C697E2 /* PhotosCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 		76F5B6D0255F014D00C697E2 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		76F5B6D2255F0A4500C697E2 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		76F5B6D4255F0C0400C697E2 /* UnsplashClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashClient.swift; sourceTree = "<group>"; };
-		76F5B6D7255F16BC00C697E2 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		76F5B6D7255F16BC00C697E2 /* PhotosCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 		76F5B6D6255F16B300C697E2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				76F5B6D7255F16BC00C697E2 /* ImageViewModel.swift */,
+				76F5B6D7255F16BC00C697E2 /* PhotosCollectionViewModel.swift */,
 				760B37B4257ACF6300E3E0AB /* PhotoCellViewModel.swift */,
 			);
 			path = ViewModels;
@@ -281,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76F5B6D8255F16BC00C697E2 /* ImageViewModel.swift in Sources */,
+				76F5B6D8255F16BC00C697E2 /* PhotosCollectionViewModel.swift in Sources */,
 				76DD99A6257045EE00DF59C3 /* APIKeys.swift in Sources */,
 				76CFFA9F25377AFB006BA761 /* PinterestLayout.swift in Sources */,
 				76F5B6D1255F014D00C697E2 /* Photos.swift in Sources */,

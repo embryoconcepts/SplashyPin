@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/jenniferhamilton/Repos/CollectionViews/SplashyPin/Programmatic/SplashyPin-Programmatic/APIKeys.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/jenniferhamilton/Repos/CollectionViews/SplashyPin/Programmatic/SplashyPin-Programmatic/Extensions">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>

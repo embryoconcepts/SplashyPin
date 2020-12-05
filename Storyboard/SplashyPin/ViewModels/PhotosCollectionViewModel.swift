@@ -2,7 +2,7 @@ import UIKit
 
 let imageCache = NSCache<NSString, UIImage>()
 
-class ImageViewModel {
+class PhotosCollectionViewModel {
 
     // MARK: Properties
 
