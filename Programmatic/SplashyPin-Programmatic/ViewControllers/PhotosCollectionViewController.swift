@@ -2,11 +2,6 @@ import UIKit
 
 class PhotosCollectionViewController: UIViewController {
 
-    // MARK: - Outlets
-
-    // TODO: add to photosView
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
     // MARK: - Properties
 
     lazy var photosCollectionView = {
@@ -67,11 +62,10 @@ class PhotosCollectionViewController: UIViewController {
 
         collectionViewModel.showLoading = {
             if self.collectionViewModel.isLoading {
-                // TODO: add to photos view model
-//                self.activityIndicator.startAnimating()
+                self.photosCollectionView.indicator.startAnimating()
                 self.photosCollectionView.collectionView.alpha = 0.0
             } else {
-//                self.activityIndicator.stopAnimating()
+                self.photosCollectionView.indicator.stopAnimating()
                 self.photosCollectionView.collectionView.alpha = 1.0
             }
         }

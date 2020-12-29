@@ -2,7 +2,9 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     static let reuseIdentifier = "PhotoCell"
-    private let constant: CGFloat = 0
+    private let stackViewConstant: CGFloat = 0
+    private let labelConstant: CGFloat = 4
+
     private let imageView = UIImageView(frame: .zero)
     private let descriptionLabel = UILabel(frame: .zero)
     private let labelContainerView = UIView(frame: .zero)
@@ -74,17 +76,17 @@ class PhotoCell: UICollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: labelContainerView.topAnchor, constant: 4),
-            descriptionLabel.bottomAnchor.constraint(equalTo: labelContainerView.bottomAnchor, constant: -4),
-            descriptionLabel.leadingAnchor.constraint(equalTo: labelContainerView.leadingAnchor, constant: 4),
-            descriptionLabel.trailingAnchor.constraint(equalTo: labelContainerView.trailingAnchor, constant: -4)
+            descriptionLabel.topAnchor.constraint(equalTo: labelContainerView.topAnchor, constant: labelConstant),
+            descriptionLabel.bottomAnchor.constraint(equalTo: labelContainerView.bottomAnchor, constant: -labelConstant),
+            descriptionLabel.leadingAnchor.constraint(equalTo: labelContainerView.leadingAnchor, constant: labelConstant),
+            descriptionLabel.trailingAnchor.constraint(equalTo: labelContainerView.trailingAnchor, constant: -labelConstant)
         ])
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: constant),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -constant),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: constant),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -constant)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: stackViewConstant),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -stackViewConstant),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: stackViewConstant),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -stackViewConstant)
         ])
 
     }
