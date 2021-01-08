@@ -1,3 +1,10 @@
+//
+//  AppDelegate.swift
+//  SplashyPin-SwiftUI-AppDelegate
+//
+//  Created by Jennifer Hamilton on 12/31/20.
+//
+
 import UIKit
 
 @main

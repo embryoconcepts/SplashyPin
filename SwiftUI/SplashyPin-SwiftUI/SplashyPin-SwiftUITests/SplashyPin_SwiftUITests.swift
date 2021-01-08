@@ -1,7 +1,7 @@
 import XCTest
-@testable import SplashyPin_Programmatic
+@testable import SplashyPin_SwiftUI
 
-class SplashyPin_ProgrammaticTests: XCTestCase {
+class SplashyPin_SwiftUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

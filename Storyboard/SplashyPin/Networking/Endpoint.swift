@@ -1,9 +1,3 @@
-//
-//  Endpoint.swift
-//  SplashyPin
-//
-//  Created by Jennifer Hamilton on 11/13/20.
-//  Copyright © 2020 Jennifer Hamilton. All rights reserved.
 import Foundation
 
 protocol Endpoint {
